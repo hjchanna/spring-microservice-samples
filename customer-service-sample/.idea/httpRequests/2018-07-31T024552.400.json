@@ -1,0 +1,7 @@
+{
+  "timestamp": "2018-07-31T13:45:52.537+0000",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Required request body is missing: public java.lang.Integer com.hjchanna.sample.ws.customer.CustomerController.postCustomer(com.hjchanna.sample.ws.customer.model.DimCustomer)",
+  "path": "/api/customer"
+}
