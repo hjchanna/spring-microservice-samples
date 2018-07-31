@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/customer-service-sample/customer-service-sample.iml" filepath="$PROJECT_DIR$/customer-service-sample/customer-service-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/employee-service-sample/employee-service-sample.iml" filepath="$PROJECT_DIR$/employee-service-sample/employee-service-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-microservice-samples.iml" filepath="$PROJECT_DIR$/spring-microservice-samples.iml" />
+    </modules>
+  </component>
+</project>
