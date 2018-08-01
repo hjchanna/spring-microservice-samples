@@ -2,12 +2,11 @@ package com.hjchanna.sample.ws;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories
-public class EmployeeDataService {
+public class ProductDataService {
+
     public static void main(String[] args) {
-        SpringApplication.run(EmployeeDataService.class, args);
+        SpringApplication.run(ProductDataService.class, args);
     }
 }
