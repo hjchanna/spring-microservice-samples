@@ -8,10 +8,7 @@ sudo: required
 services:
   - docker
 notifications:
-  email:
-    - hjchanna@gmail.com
-    on_success: always
-    on_failure: always
+  email: false
 branches:
   only:
   - master
