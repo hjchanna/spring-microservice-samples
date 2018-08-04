@@ -1,14 +1,23 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 cache:
   directories:
   - "$HOME/.m2"
 sudo: required
 services:
-  - docker
+- docker
 notifications:
   email: false
 branches:
   only:
   - master
+env:
+  global:
+  - secure: L4SBv4tXlUnroIo1pKL1lHXsOgS8lR06O+LS5M8kXjMVQRb/k6ZZWB6iLSYl4qYIvWkrCYohM/fCnRX3FI8JkrkN1NHp9VnB3mV91UBQy0Ou/QVDo8bwwI4rqYEA87tKmWL7zVQ25VkzA+Tds/woSF5YFhqiHcFKpRoLWrH+1lULfcgG4mm5lUkElwoKkCqr+IXKXGdma5+TdrJOqiojyRUWXGbAEgJ2fjyqppdxbWuqO2ZJrnzp3uN7feqT5hWOD7IIaSHyiT6rz4EpN90BpWwuviKt70sqa9YnYfjYHuBv7G7fOK4jByyLcobWCTSvw/TSMnfXeNh5N+sG+YAe9e9P7NY+YUMabgGZTOYsj4gfc1yMachqxC4mEa//+EjDs9D2hI9fUExN/ZGEMNBX2092GK2U0DP/Td+ShvMFmnrbvE/ksUwkuADVP+bFATaNtQZGe7bak/wcLJS7VGopkt2dQhy0B//zsj4/9eR/xopZHuFye1rhMHqBSOakBtaB+6Li/Nc/MyfwUoGHrLTZLWMGdLe80Mkz9+xOOpE0I0DM19OwSV4P1EaQDL5PjArtyLNCBt4vUA8+52oaL4ygbIsEp1Y/Q89ir087Lg+BegiCWUlsEU+hs2XaqBRQWlHyXiPfYLO5JobQoZ63G4SOG8P9cFIMQ4Wd3l2UqgjXNk0=
+before_install:
+  - export BUILD_NAME=spring-microservice-samples-$TRAVIS_BRANCH-$(date -u "+%Y%m%d%H%M%S")-$TRAVIS_BUILD_NUMBER
+script:
+  - sh build/tag-github.sh
+  - sh build-services.sh
+
