@@ -18,5 +18,6 @@ env:
 before_install:
 - export BUILD_NAME=spring-microservice-samples-$TRAVIS_BRANCH-$(date -u "+%Y%m%d%H%M%S")-$TRAVIS_BUILD_NUMBER
 script:
-- sh build/tag-github.sh
 - sh build/build-services.sh
+after_success:
+- sh build/tag-github.sh

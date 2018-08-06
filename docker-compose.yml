@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    expose:
+    - 3306
+    volumes:
+    # There is an issue mismatch /mnt/c and /c
+    # Relative path will not work properly in windows ubuntu subsystems.
+    # https://github.com/Microsoft/WSL/issues/1854
+    # Mount /mnt/c into /c to fix the issue
+    #   sudo mkdir /c
+    #   sudo mount --bind /mnt/c /c
+    #   cd /c/<project dir>
+    #   docker-compose ...
+    - ./sample-data:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: warehouse_db
+      MYSQL_ROOT_HOST: "%"
+
+  customer:
+    image: hjchanna/customer-service-sample:latest
+    ports:
+    - "8085:8085"
+    links:
+    - mysql
+    environment:
+      PROFILE: docker
+      SERVER_PORT: 8085
+
+  employee:
+    image: hjchanna/employee-service-sample:latest
+    ports:
+    - "8086:8086"
+    links:
+    - mysql
+    environment:
+      PROFILE: docker
+      SERVER_PORT: 8086
+
+  product:
+    image: hjchanna/product-service-sample:latest
+    ports:
+    - "8087:8087"
+    links:
+    - mysql
+    environment:
+      PROFILE: docker
+      SERVER_PORT: 8087
