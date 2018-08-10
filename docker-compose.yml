@@ -3,7 +3,6 @@ version: "3"
 services:
   mysql:
     image: mysql:latest
-    container_name: mysql
     expose:
     - 3306
     volumes:
@@ -26,7 +25,7 @@ services:
     ports:
     - "8085:8085"
     links:
-    - mysql
+    - mysql:mysql
     environment:
       PROFILE: docker
       SERVER_PORT: 8085
@@ -36,7 +35,7 @@ services:
     ports:
     - "8086:8086"
     links:
-    - mysql
+    - mysql:mysql
     environment:
       PROFILE: docker
       SERVER_PORT: 8086
@@ -46,7 +45,7 @@ services:
     ports:
     - "8087:8087"
     links:
-    - mysql
+    - mysql:mysql
     environment:
       PROFILE: docker
       SERVER_PORT: 8087

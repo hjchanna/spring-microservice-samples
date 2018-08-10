@@ -17,5 +17,6 @@
 
     <modules>
         <module>eureka-service-sample</module>
+        <module>config-service-sample</module>
     </modules>
 </project>
