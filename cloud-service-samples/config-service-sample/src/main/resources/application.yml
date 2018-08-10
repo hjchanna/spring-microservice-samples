@@ -1,5 +1,5 @@
 server:
-  port: 8002
+  port: 8888
 spring:
   profiles:
     active: native
@@ -11,3 +11,5 @@ spring:
           search-locations:
           - "classpath:config/"
           - "classpath:config/customer-service-sample"
+          - "classpath:config/employee-service-sample"
+          - "classpath:config/product-service-sample"
