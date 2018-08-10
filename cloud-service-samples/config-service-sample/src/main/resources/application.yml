@@ -1,0 +1,13 @@
+server:
+  port: 8002
+spring:
+  profiles:
+    active: native
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+          - "classpath:config/"
+          - "classpath:config/customer-service-sample"
