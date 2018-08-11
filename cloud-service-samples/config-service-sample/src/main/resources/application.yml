@@ -1,0 +1,15 @@
+server:
+  port: 8888
+spring:
+  profiles:
+    active: native
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+          - "classpath:config/"
+          - "classpath:config/customer-service-sample"
+          - "classpath:config/employee-service-sample"
+          - "classpath:config/product-service-sample"

@@ -3,7 +3,6 @@ version: "3"
 services:
   mysql:
     image: mysql:latest
-    container_name: mysql
     expose:
     - 3306
     volumes:
@@ -21,12 +20,24 @@ services:
       MYSQL_DATABASE: warehouse_db
       MYSQL_ROOT_HOST: "%"
 
+  config:
+    image: hjchanna/config-service-sample
+    expose:
+      - "8888:8888"
+
+  eureka:
+    image: hjchanna/eureka-service-sample
+    expose:
+      - "8761:8761"
+
   customer:
     image: hjchanna/customer-service-sample:latest
     ports:
     - "8085:8085"
     links:
-    - mysql
+    - mysql:mysql
+    - config:config
+    - eureka:eureka
     environment:
       PROFILE: docker
       SERVER_PORT: 8085
@@ -36,7 +47,9 @@ services:
     ports:
     - "8086:8086"
     links:
-    - mysql
+    - mysql:mysql
+    - config:config
+    - eureka:eureka
     environment:
       PROFILE: docker
       SERVER_PORT: 8086
@@ -46,7 +59,9 @@ services:
     ports:
     - "8087:8087"
     links:
-    - mysql
+    - mysql:mysql
+    - config:config
+    - eureka:eureka
     environment:
       PROFILE: docker
       SERVER_PORT: 8087
